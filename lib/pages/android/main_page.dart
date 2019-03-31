@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2019  NESP Technology Corporation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU General Public License,
+ * version 2, as published by the Free Software Foundation.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License.See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * If you have any questions or if you find a bug,
+ * please contact the author by email or ask for Issues.
+ *
+ * Author:JinZhaolu <1756404649@qq.com>
+ */
+
 import 'dart:ui';
 
 import 'package:fish_movie/assets/icons.dart';
@@ -147,7 +164,8 @@ final _mainDrawerMenuData = [
   _MainDrawerMenuDataModel(id: 5, text: '帮助', iconData: NespIcons.help),
   _MainDrawerMenuDataModel(
       id: 6, text: '检查更新', iconData: NespIcons.check_update),
-  _MainDrawerMenuDataModel(id: 7, text: '关于小丑鱼', iconData: NespIcons.about),
+  _MainDrawerMenuDataModel(id: 7, text: '设置', iconData: NespIcons.settings),
+  _MainDrawerMenuDataModel(id: 8, text: '关于小丑鱼', iconData: NespIcons.about),
 ];
 
 class _MainDrawerMenuDataModel {
