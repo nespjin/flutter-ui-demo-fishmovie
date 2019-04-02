@@ -15,7 +15,7 @@
  * Author:JinZhaolu <1756404649@qq.com>
  */
 
-import 'package:flutter/widgets.dart';
+part of movie_model;
 
 class User {
   const User({

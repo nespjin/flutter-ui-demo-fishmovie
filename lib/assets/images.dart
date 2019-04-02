@@ -14,6 +14,7 @@
  *
  * Author:JinZhaolu <1756404649@qq.com>
  */
+part of movie_assets;
 
 class ImagesAssets{
  }

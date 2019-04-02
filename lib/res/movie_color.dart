@@ -15,15 +15,8 @@
  * Author:JinZhaolu <1756404649@qq.com>
  */
 
-part of movie_data;
+part of movie_res;
 
-class UserData {
-  static final userMe = User(
-    name: '靳兆鲁',
-    email: '175404649@qq.com',
-    drawerBackgroundImage:
-        NetworkImage('http://dahe.cn/xwzx/tp/jrtj/W020050405574155463133.jpg'),
-    avatarImage: NetworkImage(
-        'https://avatars3.githubusercontent.com/u/23612165?s=40&v=4'),
-  );
+class MovieColor {
+  static var primarySwatch = Colors.blue;
 }

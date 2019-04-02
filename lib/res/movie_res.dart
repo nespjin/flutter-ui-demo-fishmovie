@@ -14,16 +14,17 @@
  *
  * Author:JinZhaolu <1756404649@qq.com>
  */
+library movie_res;
 
-part of movie_data;
+import 'package:flutter/material.dart';
 
-class UserData {
-  static final userMe = User(
-    name: '靳兆鲁',
-    email: '175404649@qq.com',
-    drawerBackgroundImage:
-        NetworkImage('http://dahe.cn/xwzx/tp/jrtj/W020050405574155463133.jpg'),
-    avatarImage: NetworkImage(
-        'https://avatars3.githubusercontent.com/u/23612165?s=40&v=4'),
-  );
-}
+part 'movie_color.dart';
+part 'movie_string.dart';
+/**
+ *
+ *
+ * @team NESP Technology
+ * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+ * @time: Created 19-4-3 上午1:32
+ * @project fish_movie
+ **/

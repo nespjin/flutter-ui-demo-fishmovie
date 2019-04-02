@@ -17,5 +17,5 @@
   -->
 
 <resources>
-    <string name="movie_app_name">小丑鱼</string>
+    <string name="movie_app_name">小丑鱼(Flutter)</string>
 </resources>

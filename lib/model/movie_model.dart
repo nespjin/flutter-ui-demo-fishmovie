@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2019  NESP Technology Corporation. All rights reserved.
  *
@@ -16,8 +14,19 @@
  *
  * Author:JinZhaolu <1756404649@qq.com>
  */
+library movie_model;
 
-class StringRes{
-  static const String app_name = '小丑鱼';
-}
+import 'package:flutter/widgets.dart';
 
+part 'play_info.dart';
+part 'play_type.dart';
+part 'user.dart';
+part 'video.dart';
+/**
+ *
+ *
+ * @team NESP Technology
+ * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+ * @time: Created 19-4-3 上午1:43
+ * @project fish_movie
+ **/

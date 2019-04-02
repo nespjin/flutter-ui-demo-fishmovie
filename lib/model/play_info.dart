@@ -12,18 +12,17 @@
  * If you have any questions or if you find a bug,
  * please contact the author by email or ask for Issues.
  *
- * Author:JinZhaolu <1756404649@qq.com>
+ * Author:JinZhaolu <1756404649@qq.com> 
  */
-
-part of movie_data;
-
-class UserData {
-  static final userMe = User(
-    name: '靳兆鲁',
-    email: '175404649@qq.com',
-    drawerBackgroundImage:
-        NetworkImage('http://dahe.cn/xwzx/tp/jrtj/W020050405574155463133.jpg'),
-    avatarImage: NetworkImage(
-        'https://avatars3.githubusercontent.com/u/23612165?s=40&v=4'),
-  );
+part of movie_model;
+///
+///
+/// @team NESP Technology
+/// @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+/// @time: Created 19-4-2 下午3:59
+/// @project fish_movie
+class PlayInfo {
+  PlayInfo({this.name, this.url});
+  String name;
+  String url;
 }

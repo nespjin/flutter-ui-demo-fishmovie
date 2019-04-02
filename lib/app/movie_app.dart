@@ -12,22 +12,33 @@
  * If you have any questions or if you find a bug,
  * please contact the author by email or ask for Issues.
  *
- * Author:JinZhaolu <1756404649@qq.com>
+ * Author:JinZhaolu <1756404649@qq.com> 
  */
+library movie_app;
 
-import 'package:fish_movie/pages/android/main.dart';
+import 'dart:ui';
+import 'package:flutter_nesp_social/flutter_nesp_social.dart';
+import 'package:fish_movie/res/movie_res.dart';
+import 'package:fish_movie/state/state.dart';
+import 'package:fish_movie/pages/android/home_page/home_page.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
 
-void main() {
-  //Currently only supports Android styles
-  switch (defaultTargetPlatform) {
-    case TargetPlatform.iOS:
-      runApp(AndroidApp());
-      break;
-    case TargetPlatform.fuchsia:
-    case TargetPlatform.android:
-      runApp(AndroidApp());
-      break;
-  }
-}
+part 'settings.dart';
+
+part 'social.dart';
+
+part 'utils.dart';
+
+part 'locale.dart';
+
+/**
+ *
+ *
+ * @team NESP Technology
+ * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+ * @time: Created 19-4-3 上午1:27
+ * @project fish_movie
+ **/

@@ -14,20 +14,38 @@
  *
  * Author:JinZhaolu <1756404649@qq.com>
  */
+library state;
 
-import 'package:fish_movie/pages/android/main.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import '../model/movie_model.dart';
 
-void main() {
-  //Currently only supports Android styles
-  switch (defaultTargetPlatform) {
-    case TargetPlatform.iOS:
-      runApp(AndroidApp());
-      break;
-    case TargetPlatform.fuchsia:
-    case TargetPlatform.android:
-      runApp(AndroidApp());
-      break;
-  }
+part 'locale_state.dart';
+
+part 'theme_state.dart';
+
+part 'user_state.dart';
+
+part 'movie_state.dart';
+
+///
+///
+/// @team NESP Technology
+/// @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+/// @time: Created 19-4-3 上午1:11
+/// @project fish_movie
+///*/
+
+final contextReducer = combineReducers<BuildContext>([
+  TypedReducer<BuildContext, RefreshContextAction>(
+      (BuildContext context, action) {
+    context = action.context;
+    return context;
+  }),
+]);
+
+class RefreshContextAction {
+  final BuildContext context;
+
+  RefreshContextAction(this.context);
 }

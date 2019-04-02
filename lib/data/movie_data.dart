@@ -14,7 +14,18 @@
  *
  * Author:JinZhaolu <1756404649@qq.com>
  */
+library movie_data;
 
-class ColorRes {
+import 'package:fish_movie/model/movie_model.dart';
+import 'package:flutter/widgets.dart';
 
-}
+part 'user_data.dart';
+
+/**
+ *
+ *
+ * @team NESP Technology
+ * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+ * @time: Created 19-4-3 上午1:45
+ * @project fish_movie
+ **/

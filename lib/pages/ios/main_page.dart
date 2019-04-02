@@ -15,12 +15,9 @@
  * Author:JinZhaolu <1756404649@qq.com>
  */
 
-import 'package:fish_movie/assets/images.dart';
-import 'package:fish_movie/res/string.dart';
+import 'package:fish_movie/app/movie_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/rendering/sliver.dart';
-import 'package:flutter/src/rendering/sliver_grid.dart';
 import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/nesp_toast.dart';
 
 class IosApp extends StatelessWidget {
@@ -28,7 +25,7 @@ class IosApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      title: StringRes.app_name,
+      title: AppUtils.getLocale(context).appName,
       theme: CupertinoThemeData(
 //        primaryColor: Color(0x007AFFFF),
         primaryColor: Colors.blue,
@@ -178,16 +175,16 @@ class _tabPageHomeState extends State<_tabPageHome> {
 
 List<Widget> getVideoItemViews(int sum) {
   List<Widget> result = List<Widget>();
-  for(int i=0 ; i<sum;i++){
-    result.add(
-        Center(
-          child: CupertinoButton(color:Colors.blue,child: Text('首页 $i'), onPressed: (){
+  for (int i = 0; i < sum; i++) {
+    result.add(Center(
+      child: CupertinoButton(
+          color: Colors.blue,
+          child: Text('首页 $i'),
+          onPressed: () {
             NespToast.showShortToast('Click $i');
           }),
-        )
-    );
+    ));
   }
 
-return result;
+  return result;
 }
-
