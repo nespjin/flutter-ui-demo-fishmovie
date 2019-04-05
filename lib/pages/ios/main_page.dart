@@ -18,14 +18,14 @@
 import 'package:fish_movie/app/movie_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/nesp_toast.dart';
+import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/views.dart';
 
 class IosApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      title: AppUtils.getLocale(context).appName,
+      title: getLocale(context).appName,
       theme: CupertinoThemeData(
 //        primaryColor: Color(0x007AFFFF),
         primaryColor: Colors.blue,

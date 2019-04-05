@@ -19,14 +19,16 @@ library home_page;
 import 'package:fish_movie/app/movie_app.dart';
 import 'package:fish_movie/assets/assets.dart';
 import 'package:fish_movie/data/movie_data.dart';
+import 'package:fish_movie/model/movie_model.dart';
+import 'package:fish_movie/res/movie_res.dart';
 import 'package:fish_movie/widget/load_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/system/system.dart';
-import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/nesp_toast.dart';
 import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/smart_drawer.dart';
+import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/views.dart';
 
-part 'tab_main_video.dart';
+part 'tab_videos_page.dart';
 
 ///
 ///
@@ -34,7 +36,13 @@ part 'tab_main_video.dart';
 /// @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
 /// @time: Created 19-4-2 下午8:45
 /// @project fish_movie
+///
+///
+/// 该页面设计的有点差，最好不要用[StatefulWidget]作为根Widget,最好使用[StatelessWidget]包含多个[StatefulWidget]作为Page
+///
+/// 这样可以通过局部刷新，没必要用根布局刷新，数据量大会卡
 ///*/
+bool _isFirstRunApp = true;
 
 class HomePage extends StatefulWidget {
   static var NAME = '/';
@@ -55,6 +63,18 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    if (_isFirstRunApp) {
+      //初始化APP
+      InitMovieApp.initLocale(context);
+      InitMovieApp.initThemeColor(context);
+      _isFirstRunApp = false;
+    }
+  }
+
+  @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 5, vsync: this);
@@ -69,50 +89,50 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     final _tabsName = [
-      AppUtils.getLocale(context).mainVideoTabName,
-      AppUtils.getLocale(context).movieTabName,
-      AppUtils.getLocale(context).soapTabName,
-      AppUtils.getLocale(context).varTabName,
-      AppUtils.getLocale(context).animeTabName,
+      getLocale(context).mainVideoTabName,
+      getLocale(context).movieTabName,
+      getLocale(context).soapTabName,
+      getLocale(context).varTabName,
+      getLocale(context).animeTabName,
     ];
 
     final _mainDrawerMenuData = [
       _MainDrawerMenuDataModel(
           id: 0,
-          text: AppUtils.getLocale(context).drawerMenuVip,
-          iconData: NespIcons.vip),
+          text: getLocale(context).drawerMenuVip,
+          iconData: MovieIcons.vip),
       _MainDrawerMenuDataModel(
           id: 1,
-          text: AppUtils.getLocale(context).drawerMenuQQGroup,
-          iconData: NespIcons.qq),
+          text: getLocale(context).drawerMenuQQGroup,
+          iconData: MovieIcons.qq),
       _MainDrawerMenuDataModel(
           id: 2,
-          text: AppUtils.getLocale(context).drawerMenuWeibo,
-          iconData: NespIcons.weibo),
+          text: getLocale(context).drawerMenuWeibo,
+          iconData: MovieIcons.weibo),
       _MainDrawerMenuDataModel(
           id: 3,
-          text: AppUtils.getLocale(context).drawerMenuWeChat,
-          iconData: NespIcons.weixin),
+          text: getLocale(context).drawerMenuWeChat,
+          iconData: MovieIcons.weixin),
       _MainDrawerMenuDataModel(
           id: 4,
-          text: AppUtils.getLocale(context).drawerMenuFeedback,
-          iconData: NespIcons.feedback),
+          text: getLocale(context).drawerMenuFeedback,
+          iconData: MovieIcons.feedback),
       _MainDrawerMenuDataModel(
           id: 5,
-          text: AppUtils.getLocale(context).drawerMenuHelp,
-          iconData: NespIcons.help),
+          text: getLocale(context).drawerMenuHelp,
+          iconData: MovieIcons.help),
       _MainDrawerMenuDataModel(
           id: 6,
-          text: AppUtils.getLocale(context).drawerMenuCheckUpdate,
-          iconData: NespIcons.check_update),
+          text: getLocale(context).drawerMenuCheckUpdate,
+          iconData: MovieIcons.check_update),
       _MainDrawerMenuDataModel(
           id: 7,
-          text: AppUtils.getLocale(context).drawerMenuSettings,
-          iconData: NespIcons.settings),
+          text: getLocale(context).drawerMenuSettings,
+          iconData: MovieIcons.settings),
       _MainDrawerMenuDataModel(
           id: 8,
-          text: AppUtils.getLocale(context).drawerMenuAbout,
-          iconData: NespIcons.about),
+          text: getLocale(context).drawerMenuAbout,
+          iconData: MovieIcons.about),
     ];
 
     List<Widget> _mainDrawerItems() {
@@ -143,8 +163,34 @@ class _HomePageState extends State<HomePage>
             iconData: data.iconData,
             text: data.text,
             onTab: () {
+              switch (data.id) {
+                case 6:
+                  checkMovieAppUpdate(context);
+                  return;
+                case 7:
+                  goSettingsPage(context);
+                  return;
+                case 8:
+                  showAboutDialog(
+                      context: context,
+                      children: <Widget>[
+                        Text('Github Repository',style: TextStyle(color: Colors.grey),),
+                        GestureDetector(
+                          child: Text('https://github.com/ns-jin/flutter-ui-demo-fishmovie',
+                            style: TextStyle(fontSize:14,color:Colors.lightBlue,decoration:TextDecoration.underline),
+                          ),
+                          onTap: (){
+                             launchURL('https://github.com/ns-jin/flutter-ui-demo-fishmovie');
+                          },
+                        )
+                      ],
+                      applicationName: MovieAppInfo.name(context),
+                      applicationLegalese: Movie_License,
+                      applicationVersion: MovieAppInfo.versionName);
+                  return;
+              }
               _drawMenuTabId = data.id;
-              Navigator.of(context).pop();
+              pop(context);
             },
           ),
         );
@@ -168,13 +214,16 @@ class _HomePageState extends State<HomePage>
             MovieSocial.openWeixin(onThen: (isSuccess) {
               if (!isSuccess) return;
               ClipBoardManager.copyToClipBoard(
-                  clipText: AppUtils.getLocale(context).weChatPublicNum,
+                  clipText: MovieStringBase.weChatPublicNum,
                   callBack: (isSuccess) => isSuccess
-                      ? NespToast.showShortToast(
-                          AppUtils.getLocale(context).copiedWeChatNum)
-                      : NespToast.showShortToast(
-                          AppUtils.getLocale(context).copyWeChatNumFailed));
+                      ? NespToast.showLongToast(
+                          getLocale(context).copiedWeChatNum)
+                      : NespToast.showLongToast(
+                          getLocale(context).copyWeChatNumFailed));
             });
+            break;
+          case 6:
+//            checkAppUpdate(context);
             break;
           default:
             NespToast.showShortToast('This page is not implement');
@@ -190,14 +239,13 @@ class _HomePageState extends State<HomePage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppUtils.getLocale(context).appName),
+        title: Text(getLocale(context).appName),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Open shopping cart',
-            onPressed: () {
+             onPressed: () {
               //go search page
-              NespToast.showLongToast('go search page');
+              goSearchPage(context);
             },
           ),
         ],
@@ -215,16 +263,30 @@ class _HomePageState extends State<HomePage>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          TabMainVideo(),
-          TabMainVideo(),
-          TabMainVideo(),
-          TabMainVideo(),
-          TabMainVideo(),
+          TabVideosPage(),
+          TabVideosPage(),
+          TabVideosPage(),
+          TabVideosPage(),
+          TabVideosPage(),
         ],
       ),
     );
   }
 }
+
+
+//_body = IndexedStack(
+//children: <Widget>[
+//TabVideosPage(),
+//TabVideosPage(),
+//TabVideosPage(),
+//TabVideosPage(),
+//TabVideosPage(),
+//],
+//index: _currentPageIndex,
+//);
+//
+//int _currentPageIndex = 0;
 
 class _MainDrawerMenuDataModel {
   const _MainDrawerMenuDataModel({

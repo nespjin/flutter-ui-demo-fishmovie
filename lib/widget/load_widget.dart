@@ -46,7 +46,7 @@ class Loading extends StatelessWidget {
             padding: EdgeInsets.only(top: 10),
             child: Text(
               text,
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(color:Colors.grey,fontSize: 12),
             ))
       ],
     );

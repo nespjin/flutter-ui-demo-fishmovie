@@ -17,7 +17,6 @@
 
 part of movie_app;
 
-
 ///
 ///
 /// @team NESP Technology
@@ -26,33 +25,116 @@ part of movie_app;
 /// @project fish_movie
 ///*/
 
-class AppUtils {
-  static MovieStringBase getLocale(BuildContext context) {
-    return MovieLocalizations.of(context).currentLocalized();
+MovieStringBase getLocale(BuildContext context) {
+  return MovieLocalizations.of(context).currentLocalized();
+}
+
+//
+
+///替换
+pushReplacementNamed(BuildContext context, String routeName) {
+  Navigator.pushReplacementNamed(context, routeName);
+}
+
+///切换无参数页面
+pushNamed(BuildContext context, String routeName) {
+  Navigator.pushNamed(context, routeName);
+}
+
+///主页
+goHomePage(BuildContext context) {
+  Navigator.pushReplacementNamed(context, HomePage.NAME);
+}
+
+goSettingsPage(BuildContext context) {
+  pushNamed(context, SettingsPage.NAME);
+}
+
+goSearchPage(BuildContext context) {
+//  showSearch(context: context, delegate:searchBarDelegate,query: '');
+///showSearch() is Official implementation
+  pushNamed(context, SearchPage.NAME);
+}
+
+bool pop<T extends Object>(BuildContext context, [T result]) {
+  return Navigator.of(context).pop<T>(result);
+}
+
+Store<MovieState> movieState(BuildContext context) {
+  return StoreProvider.of(context);
+}
+
+class InitMovieApp {
+  static initLocale(BuildContext context) async {
+    int index = await getStrongLocale();
+     MovieSettings.changeLocale(context, index);
   }
 
-  //
-
-  ///替换
-  static pushReplacementNamed(BuildContext context, String routeName) {
-    Navigator.pushReplacementNamed(context, routeName);
+  static initThemeColor(BuildContext context) async {
+    int index = await getStrongThemeColor();
+     MovieSettings.pushTheme(context, index);
   }
+}
 
-  ///切换无参数页面
-  static pushNamed(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
-  }
+Future<int> getStrongLocale() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  int index = sharedPreferences.getInt(MovieSpKeys.language);
+  return (index == null) ? 0 : index;
+}
 
-  ///主页
-  static goHomePage(BuildContext context) {
-    Navigator.pushReplacementNamed(context, HomePage.NAME);
-  }
+Future<int> getStrongThemeColor() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  int index = sharedPreferences.getInt(MovieSpKeys.themeColor);
+  return (index == null) ? 0 : index;
+}
 
-  ///个人中心
-//  static goPerson(BuildContext context, String userName) {
+///个人中心
+//    goPerson(BuildContext context, String userName) {
 //    NavigatorRouter(context, new PersonPage(userName));
 //  }
 
+Future<bool> checkMovieAppUpdate(BuildContext context) async {
+  showAlertLoadingDialog(context, text: getLocale(context).checkingUpdate);
+  await Future.delayed(Duration(seconds: 3));
+  pop(context);
+  NespToast.showShortToast(getLocale(context).isLastVersion);
+  return true;
 }
 
 
+  launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+//class searchBarDelegate extends SearchDelegate<String> {
+//  @override
+//  List<Widget> buildActions(BuildContext context) {
+//    return [IconButton(icon: Icon(Icons.search), onPressed: (){})];
+//  }
+//
+//  @override
+//  Widget buildLeading(BuildContext context) {
+//    return IconButton(icon: Icon(Icons.arrow_back), onPressed: ()=> pop(context));
+//  }
+//
+//  @override
+//  Widget buildResults(BuildContext context) {
+//    return Text('result');
+//  }
+//
+//  @override
+//  Widget buildSuggestions(BuildContext context) {
+//    return Text('suggestion');
+//  }
+//
+//
+//  @override
+//  ThemeData appBarTheme(BuildContext context) {
+//    // TODO: implement appBarTheme
+//    return super.appBarTheme(context);
+//  }
+//}

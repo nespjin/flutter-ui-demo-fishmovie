@@ -15,16 +15,36 @@
  * Author:JinZhaolu <1756404649@qq.com>
  */
 library movie_res;
+import 'dart:ui' show Color;
 
+import 'package:flutter/painting.dart';
 import 'package:flutter/material.dart';
 
 part 'movie_color.dart';
 part 'movie_string.dart';
-/**
- *
- *
- * @team NESP Technology
- * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
- * @time: Created 19-4-3 上午1:32
- * @project fish_movie
- **/
+///
+///
+/// @team NESP Technology
+/// @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+/// @time: Created 19-4-3 上午1:32
+/// @project fish_movie
+///*/
+
+String Movie_License = '''
+Fish Movie UI of Flutter Open Source Version. 
+
+Copyright (c) ${DateTime.now().year}  NESP Technology Corporation. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms and conditions of the GNU General Public License,
+version 3, as published by the Free Software Foundation.
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License.See the License for the specific language governing permissions and
+limitations under the License.
+
+If you have any questions or if you find a bug,
+please contact the author by email or ask for Issues.
+
+Author:JinZhaolu <1756404649@qq.com> 
+''';

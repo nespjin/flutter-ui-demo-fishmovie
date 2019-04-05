@@ -26,40 +26,55 @@ part of movie_app;
 ///*/
 
 class MovieSettings {
-
-  static pushTheme(Store store, int index) {
+  static pushTheme(BuildContext context, int index) async {
+    Store store = movieState(context);
     ThemeData themeData;
-    List<Color> colors = getThemeListColor();
-    themeData = getThemeData(colors[index]);
+    List<MovieThemeColor> colors = getMovieThemeColors();
+    themeData = getThemeData(colors[index].color);
     store.dispatch(new RefreshThemeDataAction(themeData));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(MovieSpKeys.themeColor, index);
   }
 
   static getThemeData(Color color) {
     return ThemeData(primarySwatch: color, platform: TargetPlatform.android);
   }
 
-  static List<Color> getThemeListColor() {
+  static List<MovieThemeColor> getMovieThemeColors() {
     return [
-      MovieColor.primarySwatch,
-      Colors.brown,
-      Colors.blue,
-      Colors.teal,
-      Colors.amber,
-      Colors.blueGrey,
-      Colors.deepOrange,
+      MovieThemeColor(id: 0, name: '官方蓝', color: MovieThemeColors.movieBlue),
+      MovieThemeColor(id: 1, name: '棕  色', color: Colors.brown),
+      MovieThemeColor(id: 2, name: '天空蓝', color: Colors.blue),
+      MovieThemeColor(id: 3, name: '水鸭绿', color: Colors.teal),
+      MovieThemeColor(id: 4, name: '琥珀黄', color: Colors.amber),
+      MovieThemeColor(id: 5, name: '蓝灰色', color: Colors.blueGrey),
+      MovieThemeColor(id: 6, name: '深橙色', color: Colors.deepOrange),
     ];
   }
 
-   static changeLocale(Store<MovieState> store, int index) {
+  static changeLocale(BuildContext context, int index) async {
+    if (index == null) return;
+    Store<MovieState> store = movieState(context);
     Locale locale = store.state.platformLocale;
     switch (index) {
-      case 1:
+      case 0:
         locale = Locale('zh', 'CH');
         break;
-      case 2:
+      case 1:
         locale = Locale('en', 'US');
         break;
     }
     store.dispatch(RefreshLocaleDataAction(locale));
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(MovieSpKeys.language, index);
   }
+}
+
+class MovieThemeColor {
+  final String name;
+  final Color color;
+  final int id;
+
+  MovieThemeColor({this.id, this.name, this.color});
 }

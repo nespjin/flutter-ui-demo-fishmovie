@@ -20,9 +20,9 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^3.0.3
+  url_launcher: ^5.0.2
   cupertino_icons: ^0.1.2
   vector_math: ^2.0.8
-  url_launcher: ^3.0.3
   flutter_redux: ^0.5.3
   flutter_localizations:
     sdk: flutter
@@ -48,9 +48,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  #  assets:
-  #    - assets/images/ic_vip.png
-  #    - images/a_dot_ham.jpeg
+  assets:
+     - assets/images/img_loading_bg.webp
+     - assets/images/user_bg.webp
+     - assets/images/user_avi.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

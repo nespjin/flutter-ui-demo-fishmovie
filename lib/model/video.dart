@@ -27,22 +27,22 @@ part of movie_model;
 ///
 class Video {
   Video(
-      {this.name,
-      this.title,
-      this.status,
-      this.coverImgUrl,
+      {this.name = "",
+      this.title = "",
+      this.status = "",
+      this.coverImgUrl = "",
       this.playTypeList,
-      this.types,
-      this.videoClass,
-      this.score,
-      this.infoUrl,
-      this.stars,
-      this.director,
-      this.updateTime,
-      this.showTime,
-      this.introduction,
-      this.area,
-      this.language});
+      this.types = "",
+      this.videoClass = "",
+      this.score = "",
+      this.infoUrl = "",
+      this.stars = "",
+      this.director = "",
+      this.updateTime = "",
+      this.showTime = "",
+      this.introduction = "",
+      this.area = "",
+      this.language = ""});
 
   String name;
 
@@ -52,7 +52,7 @@ class Video {
 
   String coverImgUrl;
 
-  List<PlayType> playTypeList;
+  List<PlayType> playTypeList = List<PlayType>();
 
   String types;
 

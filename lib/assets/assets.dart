@@ -18,7 +18,7 @@
 library movie_assets;
 
 import 'package:flutter/widgets.dart';
-
+import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/assets/assets.dart';
 part 'icons.dart';
 part 'images.dart';
 /**

@@ -20,17 +20,26 @@ import 'dart:ui';
 import 'package:flutter_nesp_social/flutter_nesp_social.dart';
 import 'package:fish_movie/res/movie_res.dart';
 import 'package:fish_movie/state/state.dart';
+import 'package:fish_movie/io/movie_io.dart';
 import 'package:fish_movie/pages/android/home_page/home_page.dart';
+import 'package:fish_movie/pages/android/search_page/search_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
+import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/views/views.dart';
+import 'package:nesp_flutter_sdk/com/nesp/sdk/flutter/io/io.dart';
+import '../pages/android/settings_page/settings_page.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'settings.dart';
 
 part 'social.dart';
 
 part 'utils.dart';
+
+part 'app_info.dart';
 
 part 'locale.dart';
 

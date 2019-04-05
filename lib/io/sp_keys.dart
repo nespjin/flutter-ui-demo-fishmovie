@@ -12,18 +12,20 @@
  * If you have any questions or if you find a bug,
  * please contact the author by email or ask for Issues.
  *
- * Author:JinZhaolu <1756404649@qq.com>
+ * Author:JinZhaolu <1756404649@qq.com> 
  */
+part of movie_io;
 
-part of movie_data;
+///
+///
+/// @team NESP Technology
+/// @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+/// @time: Created 19-4-3 下午6:29
+/// @project fish_movie
+///*/
 
-class UserData {
-  static final userMe = User(
-    name: '靳兆鲁',
-    email: '175404649@qq.com',
-    drawerBackgroundImage:
-        AssetImage('assets/images/user_bg.webp'),
-    avatarImage: AssetImage(
-        'assets/images/user_avi.webp'),
-  );
+class MovieSpKeys {
+  static final String language = 'movie_language';
+
+  static final String themeColor='movie_theme_color';
 }
