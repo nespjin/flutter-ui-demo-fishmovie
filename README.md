@@ -1,9 +1,10 @@
 # Fish Movie UI
 
 
-![](https://ghbtns.com/github-btn.html?user=ns-jin&repo=flutter-ui-demo-fishmovie&type=star&count=true")
+
 
 [![](https://img.shields.io/badge/LICESE-GPL-orange.svg)](./LICENSE)
+
 
 Fish Movie UI of Flutter Open Source Version.
 
