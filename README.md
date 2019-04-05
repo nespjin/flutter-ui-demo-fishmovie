@@ -6,10 +6,9 @@
 Fish Movie UI of Flutter Open Source Version.
 
 
-## Video
- <video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
-<source id="mp4" src="./doc/videos/Flutter-movie.mp4" type="video/mp4">
-</video> 
+## Screentshot
+![enter description here][1]
+ 
 
 ## Introduction
 Fish Movie App Flutter version of the user interface open source version,
@@ -28,3 +27,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.io/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+
+  [1]: ./images/Flutter-movie.gif "Flutter-movie"
