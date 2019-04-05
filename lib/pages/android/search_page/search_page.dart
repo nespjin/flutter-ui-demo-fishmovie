@@ -61,7 +61,7 @@ class SearchPage extends StatelessWidget {
             onChanged: (queryText) => _queryText = queryText,
             cursorColor: Colors.white,
             decoration:
-                InputDecoration(fillColor: Colors.white, hintText: '请输入要搜索的内容'),
+                InputDecoration(fillColor: Colors.white, hintText: getLocale(context).searchHintText),
           ),
           leading: IconButton(
               icon: Icon(Icons.arrow_back), onPressed: () => pop(context)),
@@ -105,10 +105,10 @@ var _hotSearchs = ['我不是药神', '大佛普拉斯', '流浪地球', '狗十
 ///Simulate search tasks, normal business should return Future<bool> instead of void
 void _startSearch(BuildContext context) async {
   if (_queryText.isEmpty) {
-    NespToast.showShortToast('请先输入要搜索的内容');
+    NespToast.showShortToast(getLocale(context).pleaseEnterSearchText);
     return;
   }
-  showAlertLoadingDialog(context, text: '正在搜索');
+  showAlertLoadingDialog(context, text: getLocale(context).searching);
   Future.delayed(Duration(seconds: 3)).then((result) {
     ///normal result is bool (success or failed),handle search result here
     ///now we suppose the return is true,and we show a toast

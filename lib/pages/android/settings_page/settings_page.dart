@@ -62,11 +62,11 @@ class _CustomSettingsGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return _SettingsGroup(
-      title: '个性化',
+      title: getLocale(context).settingsGroupPersonalise,
       children: <Widget>[
         _SettingsItem(
           title: getLocale(context).settingsItemChangeLang,
-          subTitle: '更改区域语言',
+          subTitle: getLocale(context).settingsItemChangeLangDesc,
           onTab: () => showSingleSelectDialog(context,
               singleSelectDialogDefaultValue: getStrongLocale,
               singleSelectDialogTitle:
@@ -85,7 +85,7 @@ class _CustomSettingsGroup extends StatelessWidget {
         ),
         _SettingsItem(
           title: getLocale(context).settingsItemChangeTheme,
-          subTitle: '更改主题颜色',
+          subTitle: getLocale(context).settingsItemChangeThemeDesc,
           onTab: () => showSingleSelectDialog(context,
               singleSelectDialogDefaultValue: getStrongThemeColor,
               singleSelectDialogTitle:

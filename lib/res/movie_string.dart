@@ -66,6 +66,14 @@ class MovieStringZh extends MovieStringBase {
   String settingsChangeLangChinese = '中文';
   String settingsChangeLangEnglish = 'English';
   String settingsItemChangeTheme = '更换主题';
+  String settingsItemChangeLangDesc = '更改区域语言';
+  String settingsItemChangeThemeDesc = '更该主题色';
+  String settingsGroupPersonalise = '个性化';
+  String searchHintText = '请输入要搜索的内容';
+  String searching = '正在搜索';
+  String pleaseEnterSearchText='请先输入要搜索的内容';
+
+
 }
 
 ///英文实体实现类
@@ -120,6 +128,15 @@ class MovieStringEn extends MovieStringBase {
   String settingsChangeLangChinese = '中文';
   String settingsChangeLangEnglish = 'English';
   String settingsItemChangeTheme = 'Theme';
+
+  String settingsItemChangeLangDesc = 'Set app language';
+  String settingsItemChangeThemeDesc = 'Set app theme color';
+  String settingsGroupPersonalise = 'Personalise';
+
+  String searchHintText = 'Please enter movie name';
+  String searching = 'Searching';
+  String pleaseEnterSearchText='Please enter the text you want to search first';
+
 }
 
 ///语言实体基类
@@ -161,6 +178,13 @@ abstract class MovieStringBase {
   String settingsItemChangeLang;
   String settingsChangeLangChinese;
   String settingsChangeLangEnglish;
-
   String settingsItemChangeTheme;
+
+  String settingsItemChangeLangDesc;
+  String settingsItemChangeThemeDesc;
+  String settingsGroupPersonalise;
+
+  String searchHintText;
+  String searching;
+  String pleaseEnterSearchText;
 }
