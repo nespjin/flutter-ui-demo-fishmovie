@@ -174,22 +174,37 @@ class _HomePageState extends State<HomePage>
                   showAboutDialog(
                       context: context,
                       children: <Widget>[
-                        Text('Github Repository',style: TextStyle(color: Colors.grey),),
+                        Text(
+                          'Github Repository',
+                          style: TextStyle(color: Colors.grey),
+                        ),
                         GestureDetector(
-                          child: Text('https://github.com/ns-jin/flutter-ui-demo-fishmovie',
-                            style: TextStyle(fontSize:14,color:Colors.lightBlue,decoration:TextDecoration.underline),
+                          child: Text(
+                            'https://github.com/ns-jin/flutter-ui-demo-fishmovie',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.lightBlue,
+                                decoration: TextDecoration.underline),
                           ),
-                          onTap: (){
-                             launchURL('https://github.com/ns-jin/flutter-ui-demo-fishmovie');
+                          onTap: () {
+                            launchURL(
+                                'https://github.com/ns-jin/flutter-ui-demo-fishmovie');
                           },
                         ),
-                        Text('正式版网址',style: TextStyle(color: Colors.grey),),
+                        Text(
+                          '正式版网址',
+                          style: TextStyle(color: Colors.grey),
+                        ),
                         GestureDetector(
-                          child: Text('https://nesp.gitee.io/movie',
-                            style: TextStyle(fontSize:14,color:Colors.lightBlue,decoration:TextDecoration.underline),
+                          child: Text(
+                            'https://nesp.gitee.io/movie',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.lightBlue,
+                                decoration: TextDecoration.underline),
                           ),
-                          onTap: (){
-                             launchURL('https://nesp.gitee.io/movie');
+                          onTap: () {
+                            launchURL('https://nesp.gitee.io/movie');
                           },
                         ),
                       ],
@@ -252,7 +267,7 @@ class _HomePageState extends State<HomePage>
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-             onPressed: () {
+            onPressed: () {
               //go search page
               goSearchPage(context);
             },
@@ -282,7 +297,6 @@ class _HomePageState extends State<HomePage>
     );
   }
 }
-
 
 //_body = IndexedStack(
 //children: <Widget>[
