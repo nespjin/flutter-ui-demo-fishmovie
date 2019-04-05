@@ -33,25 +33,29 @@ class TabVideosPage extends StatefulWidget {
 
 var _tabLoaded = false;
 ScrollController _gridViewController = ScrollController();
-int _totalPage = 5; //1000 pages in total
+int _totalPage = 1000; //1000 pages in total
 int _currentPage = 1;
 int _pageNum = 12; //12 Video item in a page
 bool _isRefresh = false;
 bool _isLoadMore = false;
 
 List<Video> _videos = List<Video>();
+bool _isFirstInit = false;
 
 class _TabVideosPageState extends State<TabVideosPage> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    loadPageData();
-    _gridViewController.addListener(() =>
-        (_gridViewController.position.pixels ==
-                _gridViewController.position.maxScrollExtent)
-            ? loadMore()
-            : () {});
+    if (!_isFirstInit) {
+      loadPageData();
+      _gridViewController.addListener(() =>
+          (_gridViewController.position.pixels ==
+                  _gridViewController.position.maxScrollExtent)
+              ? loadMore()
+              : () {});
+      _isFirstInit = true;
+    }
   }
 
   @override
@@ -64,23 +68,25 @@ class _TabVideosPageState extends State<TabVideosPage> {
               onRefresh: onRefresh,
             )
           : Loading(
-              text: "正在加载",
+              text: getLocale(context).loading,
             ),
     );
   }
 
   void loadMore() {
+    print('loading${_isLoadMore} ==${_isRefresh}');
     //模拟加载更多
     if (_currentPage / _totalPage > 1 || _isLoadMore || _isRefresh) {
       //没有更多数据
       return;
     }
+    print('loading 2 ');
     _isLoadMore = true;
-    NespToast.showShortToast('正在记载更多...');
+    NespToast.showShortToast(getLocale(context).loadingMore);
     loadPageData().then((videos) {
       ++_currentPage;
       _isLoadMore = false;
-      NespToast.showShortToast('加载成功');
+      NespToast.showShortToast(getLocale(context).loadSuccess);
     });
   }
 
@@ -93,7 +99,8 @@ class _TabVideosPageState extends State<TabVideosPage> {
     //模拟刷新
     _videos.clear();
     return loadPageData().then((videos) {
-      NespToast.showShortToast('刷新成功');
+      _isRefresh = false;
+      NespToast.showShortToast(getLocale(context).refreshSuccess);
     });
   }
 
@@ -132,6 +139,15 @@ class _TabVideosPageState extends State<TabVideosPage> {
     //模拟网络阻塞
     await Future.delayed(const Duration(seconds: 3), () {
       setState(() {
+        ///_tabLoaded should in accordance with tab position
+        ///example:
+        ///switch(position)
+        ///case 0:
+        ///_tabLoadedOne = true;
+        ///break;
+        ///.........
+        ///
+        ///
         _tabLoaded = true;
       });
     });

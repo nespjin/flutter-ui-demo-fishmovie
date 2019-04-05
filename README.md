@@ -1,6 +1,15 @@
 # Fish Movie UI
 
+<iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px" height="20px" src="https://ghbtns.com/github-btn.html?user=ns-jin&repo=flutter-ui-demo-fishmovie&type=star&count=true" >
+ </iframe>
+
 Fish Movie UI of Flutter Open Source Version.
+
+
+## Video
+ <video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
+<source id="mp4" src="./doc/videos/Flutter-movie.mp4" type="video/mp4">
+</video> 
 
 ## Introduction
 Fish Movie App Flutter version of the user interface open source version,

@@ -71,9 +71,12 @@ class MovieStringZh extends MovieStringBase {
   String settingsGroupPersonalise = '个性化';
   String searchHintText = '请输入要搜索的内容';
   String searching = '正在搜索';
-  String pleaseEnterSearchText='请先输入要搜索的内容';
-
-
+  String pleaseEnterSearchText = '请先输入要搜索的内容';
+  String loadSuccess = '加载成功';
+  String loadingMore = '正在加载更多';
+  String loading = '正在加载';
+  String refresh = '正在刷新';
+  String refreshSuccess = '刷新成功';
 }
 
 ///英文实体实现类
@@ -135,8 +138,14 @@ class MovieStringEn extends MovieStringBase {
 
   String searchHintText = 'Please enter movie name';
   String searching = 'Searching';
-  String pleaseEnterSearchText='Please enter the text you want to search first';
+  String pleaseEnterSearchText =
+      'Please enter the text you want to search first';
 
+  String loadSuccess = 'loaded successfully';
+  String loadingMore = 'loading more';
+  String loading = 'loading';
+  String refresh = 'refreshing';
+  String refreshSuccess = 'Refresh successfully';
 }
 
 ///语言实体基类
@@ -187,4 +196,12 @@ abstract class MovieStringBase {
   String searchHintText;
   String searching;
   String pleaseEnterSearchText;
+
+  String loadSuccess;
+  String loadingMore;
+
+  String loading;
+
+  String refresh;
+  String refreshSuccess;
 }
